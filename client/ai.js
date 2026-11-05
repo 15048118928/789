@@ -1,11 +1,11 @@
 // Keys stay in the password field only: never persist or include in exports.
-function startDailyAI(id){
+async function startDailyAI(id){
   if(aiController){toast('上一条改写正在进行，请稍候或取消');return}
   $('projectfilter').value='';show('resume');selected=new Set([id]);
   document.querySelectorAll('[data-select]').forEach(c=>c.checked=c.dataset.select===id);output();
   $('aiReview').hidden=true;$('aiStatus').textContent='已选中这一条记录。改写工作要点，卡点 / 思路原文保留。';
   if(!$('aiKey').value.trim()){openPreparation();toast('请先完成 DeepSeek 连接设置');}
-  else $('aiRewrite').click();
+  else {window.scrollTo(0,0);return $('aiRewrite').onclick();}
   window.scrollTo(0,0);
 }
 $('entries').addEventListener('click',e=>{const b=e.target.closest('[data-daily-ai]');if(b)startDailyAI(b.dataset.dailyAi)});
