@@ -1,0 +1,14 @@
+{
+  "name": "internote",
+  "version": "1.0.0",
+  "private": true,
+  "description": "实习手记：每日记录、AI 梳理、卡点复盘和项目经历合成",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node build.cjs",
+    "test": "node build.cjs && node tests/client.cjs && node tests/worker.mjs",
+    "preview": "python -m http.server 5178 --bind 127.0.0.1 --directory client"
+  }
+}
